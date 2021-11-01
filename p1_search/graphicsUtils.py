@@ -281,8 +281,8 @@ def _clear_keys(event=None):
     _keyswaiting = {}
     _got_release = None
 
-def keys_pressed(d_o_e=tk.tkinter.dooneevent,
-                 d_w=tk.tkinter.DONT_WAIT):
+def keys_pressed(d_o_e=tk.dooneevent,
+                 d_w=tk.DONT_WAIT):
     d_o_e(d_w)
     if _got_release:
       d_o_e(d_w)
