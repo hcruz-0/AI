@@ -12,7 +12,7 @@ import random
 import string
 import time
 import types
-import tkinter 
+import tkinter as tk
 
 _Windows = sys.platform == 'win32'  # True if on Win95/98/NT
 
@@ -338,8 +338,8 @@ def move_to(object, x, y=None,
     d_o_e(d_w)
     
 def move_by(object, x, y=None,
-            d_o_e=tkinter.tkinter.dooneevent,
-            d_w=tkinter.tkinter.DONT_WAIT):
+            d_o_e=tk.tkinter.dooneevent,
+            d_w=tk.tkinter.DONT_WAIT):
     if y is None:
         try: x, y = x
         except: raise Exception('incomprehensible coordinates') 
