@@ -126,7 +126,7 @@ class DistanceCalculator(threading.Thread):
       distanceThread = self
 
       distances = computeDistances(self.layout)
-      print >>sys.stdout, '[Distancer]: Switching to maze distances' 
+      print('[Distancer]: Switching to maze distances', file=sys.stdout) 
 
       distanceMap[self.layout.walls] = distances
       distanceThread = None
@@ -143,7 +143,7 @@ def computeDistances(layout):
         dist = {}
         closed = {}
         for node in allNodes:
-            dist[node] = sys.maxint
+            dist[node] = sys.maxsize
         import util
         queue = util.PriorityQueue()
         queue.push(source, 0)

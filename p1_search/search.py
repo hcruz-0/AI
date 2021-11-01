@@ -70,9 +70,9 @@ def tinyMazeSearch(problem):
   
   
 def graphSearch(problem, frontier):
-	print "Start:", problem.getStartState()
-  	print "Is the start a goal?", problem.isGoalState(problem.getStartState())
-  	print "Start's successors:", problem.getSuccessors(problem.getStartState())
+	print("Start:", problem.getStartState())
+  	print("Is the start a goal?", problem.isGoalState(problem.getStartState()))
+  	print("Start's successors:", problem.getSuccessors(problem.getStartState()))
   	
   	explored = []
   	frontier.push([(problem.getStartState(), "Stop" , 0)])

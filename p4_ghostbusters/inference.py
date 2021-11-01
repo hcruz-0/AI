@@ -38,7 +38,7 @@ class InferenceModule:
     ghostPosition = gameState.getGhostPosition(self.index) # The position you set
     actionDist = self.ghostAgent.getDistribution(gameState)
     dist = util.Counter()
-    for action, prob in actionDist.items():
+    for action, prob in list(actionDist.items()):
       successorPosition = game.Actions.getSuccessor(ghostPosition, action)
       dist[successorPosition] = prob
     return dist
@@ -193,7 +193,7 @@ class ExactInference(InferenceModule):
     newBeliefs = util.Counter()
     for oldPos in self.legalPositions:
     	newPosDist = self.getPositionDistribution(self.setGhostPosition(gameState, oldPos))
-    	for newPos, prob in newPosDist.items():
+    	for newPos, prob in list(newPosDist.items()):
     		#print "oldPos: ", oldPos, "oldBelief", self.beliefs[oldPos], " newPos: ", newPos, " prob: ", prob
     		newBeliefs[newPos] += self.beliefs[oldPos] * prob
     		#print "new belief", newBeliefs[newPos]

@@ -39,9 +39,9 @@ class QLearningAgent(ReinforcementAgent):
 
     "*** YOUR CODE HERE ***"
     self.qValues = util.Counter()
-    print "ALPHA", self.alpha
-    print "DISCOUNT", self.discount
-    print "EXPLORATION", self.epsilon
+    print("ALPHA", self.alpha)
+    print("DISCOUNT", self.discount)
+    print("EXPLORATION", self.epsilon)
 
   def getQValue(self, state, action):
     """
@@ -120,9 +120,9 @@ class QLearningAgent(ReinforcementAgent):
       it will be called on your behalf
     """
     "*** YOUR CODE HERE ***"
-    print "State: ", state, " , Action: ", action, " , NextState: ", nextState, " , Reward: ", reward
-    print "QVALUE", self.getQValue(state, action)
-    print "VALUE", self.getValue(nextState)
+    print("State: ", state, " , Action: ", action, " , NextState: ", nextState, " , Reward: ", reward)
+    print("QVALUE", self.getQValue(state, action))
+    print("VALUE", self.getValue(nextState))
     self.qValues[(state, action)] = self.getQValue(state, action) + self.alpha * (reward + self.discount * self.getValue(nextState) - self.getQValue(state, action))
 
 class PacmanQAgent(QLearningAgent):
@@ -181,7 +181,7 @@ class ApproximateQAgent(PacmanQAgent):
     "*** YOUR CODE HERE ***"
     qValue = 0.0
     features = self.featExtractor.getFeatures(state, action)
-    for key in features.keys():
+    for key in list(features.keys()):
     	qValue += (self.weights[key] * features[key])
     return qValue
 
@@ -192,7 +192,7 @@ class ApproximateQAgent(PacmanQAgent):
     """
     "*** YOUR CODE HERE ***"
     features = self.featExtractor.getFeatures(state, action)
-    for key in features.keys():
+    for key in list(features.keys()):
     	self.weights[key] += self.alpha * (reward + self.discount * self.getValue(nextState) - self.getQValue(state, action)) * features[key]
 
   def final(self, state):
