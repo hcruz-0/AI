@@ -62,14 +62,14 @@ def begin_graphics(width=640, height=480, color=formatColor(0, 0, 0), title=None
     _bg_color = color
     
     # Create the root window
-    _root_window = tkinter.Tk()
+    _root_window = tk.Tk()
     _root_window.protocol('WM_DELETE_WINDOW', _destroy_window)
     _root_window.title(title or 'Graphics Window')
     _root_window.resizable(0, 0)
 
     # Create the canvas object
     try:
-      _canvas = tkinter.Canvas(_root_window, width=width, height=height)
+      _canvas = tk.Canvas(_root_window, width=width, height=height)
       _canvas.pack()
       draw_background()
       _canvas.update()
@@ -188,7 +188,7 @@ def circle(pos, r, outlineColor, fillColor, endpoints=None, style='pieslice', wi
 def image(pos, file="../../blueghost.gif"):
     x, y = pos
     # img = PhotoImage(file=file)
-    return _canvas.create_image(x, y, image = tkinter.PhotoImage(file=file), anchor = tkinter.NW)
+    return _canvas.create_image(x, y, image = tk.PhotoImage(file=file), anchor = tk.NW)
     
     
 def refresh():
@@ -281,8 +281,8 @@ def _clear_keys(event=None):
     _keyswaiting = {}
     _got_release = None
 
-def keys_pressed(d_o_e=tk.dooneevent,
-                 d_w=tk.DONT_WAIT):
+def keys_pressed(d_o_e=tk._tkinter.dooneevent,
+                 d_w=tk._tkinter.DONT_WAIT):
     d_o_e(d_w)
     if _got_release:
       d_o_e(d_w)
@@ -304,8 +304,8 @@ def wait_for_keys():
     return keys
 
 def remove_from_screen(x,
-                       d_o_e=tkinter.tkinter.dooneevent,
-                       d_w=tkinter.tkinter.DONT_WAIT):
+                       d_o_e=tk._tkinter.dooneevent,
+                       d_w=tk._tkinter.DONT_WAIT):
     _canvas.delete(x)
     d_o_e(d_w)
 
@@ -316,8 +316,8 @@ def _adjust_coords(coord_list, x, y):
     return coord_list
 
 def move_to(object, x, y=None,
-            d_o_e=tkinter.tkinter.dooneevent,
-            d_w=tkinter.tkinter.DONT_WAIT):
+            d_o_e=tk._tkinter.dooneevent,
+            d_w=tk._tkinter.DONT_WAIT):
     if y is None:
         try: x, y = x
         except: raise  'incomprehensible coordinates' 
